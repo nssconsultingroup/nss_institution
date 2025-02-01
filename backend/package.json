@@ -4,6 +4,7 @@
   "description": "A backend application from nss-consulting group for making online institution facility",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon src/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,6 +14,8 @@
   "author": "Nikunj Shikhar Shivam",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
   }
 }
