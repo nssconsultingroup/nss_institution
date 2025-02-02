@@ -1,15 +1,16 @@
-var mongoose, {Schema} = require('mongoose');
+const mongoose = require('mongoose');
 
-const adminSchema  = new Schema(
+const adminSchema  = new mongoose.Schema(
     {
         id: {
             type: String,
-            required: true
+            required: true,
+            index: true
         },
         fullName: {
             type: String,
-            max: 30,
-            min: 3,
+            minlength: 3,
+            maxlength: 30,
             required: true
         },
         email: {
@@ -18,7 +19,7 @@ const adminSchema  = new Schema(
             required: true
         },
         phone: {
-            type: Number,
+            type: String,
             match: /^[0-9]{10}$/,
             required: true
         },
@@ -31,7 +32,7 @@ const adminSchema  = new Schema(
             required: true
         },
         aadhar: {
-            type: Number,
+            type: String,
             match: /^[0-9]{12}$/,
             required: true
         },
@@ -46,19 +47,23 @@ const adminSchema  = new Schema(
             type: String,
             required: true
         },
-        studentId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Student"
-        },
-        teacherId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Teacher"
-        }
+        studentId: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Student"
+            }
+        ],
+        teacherId: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Teacher"
+            }
+        ]
     },
     {
         timestamps: true,
     }
 )
 
-const admin = mongoose.model("Admin", adminSchema);
-module.exports = admin;
+const Admin = mongoose.model("Admin", adminSchema);
+module.exports = Admin;
