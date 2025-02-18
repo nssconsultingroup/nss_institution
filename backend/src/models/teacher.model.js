@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const studentSchema = new mongoose.Schema(
+const teacherSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -105,5 +105,5 @@ const studentSchema = new mongoose.Schema(
     }
 )
 
-const Student =  mongoose.model("Student", studentSchema);
-module.exports = Student
+const Teacher =  mongoose.model("Teacher", teacherSchema);
+module.exports = Teacher
